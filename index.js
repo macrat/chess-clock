@@ -17,10 +17,13 @@ const second2str = (sec) => {
 
 
 class TimeButton {
-    constructor(labelSelector, radioSelector) {
+    constructor(labelSelector, radioSelector, initial) {
         this.label = document.querySelector(labelSelector);
         this.radio = document.querySelector(radioSelector);
         this.remain = 60 * 60 * 1000;
+        if (initial) {
+            this.remain = Number(initial);
+        }
     }
 
     update(delta) {
@@ -39,9 +42,19 @@ class TimeButton {
 }
 
 
-const white = new TimeButton('label.white', '.black.radio');
-const black = new TimeButton('label.black', '.white.radio');
+const whiteInitial = localStorage.getItem('white-initial');
+const blackInitial = localStorage.getItem('black-initial');
+
+const white = new TimeButton('label.white', '.black.radio', localStorage.getItem('white-remain') || whiteInitial);
+const black = new TimeButton('label.black', '.white.radio', localStorage.getItem('black-remain') || blackInitial);
 const favicon = document.querySelector('#favicon');
+
+if (whiteInitial) {
+    document.querySelector('.white.initial-time').value = Number(whiteInitial) / 60 / 1000;
+}
+if (blackInitial) {
+    document.querySelector('.black.initial-time').value = Number(blackInitial) / 60 / 1000;
+}
 
 
 let beforeTime = new Date().getTime();
@@ -67,4 +80,13 @@ setInterval(() => {
 document.querySelector('button').addEventListener('click', () => {
     white.remain = Number(document.querySelector('.white.initial-time').value) * 60 * 1000;
     black.remain = Number(document.querySelector('.black.initial-time').value) * 60 * 1000;
+
+    localStorage.setItem('white-initial', white.remain);
+    localStorage.setItem('black-initial', black.remain);
+});
+
+
+window.addEventListener('beforeunload', () => {
+    localStorage.setItem('white-remain', white.remain);
+    localStorage.setItem('black-remain', black.remain);
 });
