@@ -20,10 +20,7 @@ class TimeButton {
     constructor(labelSelector, radioSelector, initial) {
         this.label = document.querySelector(labelSelector);
         this.radio = document.querySelector(radioSelector);
-        this.remain = 60 * 60 * 1000;
-        if (initial) {
-            this.remain = Number(initial);
-        }
+        this.remain = initial ? Number(initial) : (60 * 60 * 1000);
     }
 
     update(delta) {
