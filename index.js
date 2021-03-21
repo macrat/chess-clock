@@ -31,9 +31,9 @@ class TimeButton {
         this.label.innerText = second2str(Math.round(this.remain / 1000));
 
         if (this.remain < 0) {
-            this.label.classList.add('negative');
+            this.label.classList.add('timeup');
         } else {
-            this.label.classList.remove('negative');
+            this.label.classList.remove('timeup');
         }
     }
 }

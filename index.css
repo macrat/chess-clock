@@ -59,21 +59,23 @@ input[type="radio"]:checked + .pause .pause-label {
     font-size: 400%;
     padding: 32px 12px;
     transition: flex .2s;
-    border: 6px solid transparent
+    border-bottom: 16px solid;
+    animation: 1s linear infinite alternate blink;
 }
 .time.white {
     transform: rotate(180deg);
+    border-color: black;
 }
-.time.negative {
-    animation: 1s linear infinite alternate blink;
-    border-color: red;
+.time.black {
+    border-color: white;
+}
+.time:not(.timeup) {
+    border-color: transparent;
 }
 
 @keyframes blink {
       0% { border-color: transparent }
      45% { border-color: transparent }
-     55% { border-color: red }
-    100% { border-color: red }
 }
 
 .settings {
