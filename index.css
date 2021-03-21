@@ -99,7 +99,9 @@ input[type="radio"]:checked + .pause .settings {
     font-size: 110%;
     width: 8em;
     max-width: 100%;
-    padding: .2em .5em;
+    text-align: center;
+    padding: .5em 1em;
+    box-sizing: border-box;
 }
 .settings .white {
     color: black;
@@ -111,6 +113,7 @@ input[type="radio"]:checked + .pause .settings {
     background-color: #555;
     color: white;
     border: none;
-    padding: .3em;
+    padding: 1em;
+    box-sizing: border-box;
     width: 100%;
 }
