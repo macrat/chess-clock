@@ -1,20 +1,18 @@
 const zfill = (val) => `00${val}`.slice(-2);
 
-
 const second2str = (sec) => {
-  let sign = '';
-  if (sec < 0) {
-    sign = '-';
-    sec = -sec;
-  }
+    let sign = '';
+    if (sec < 0) {
+        sign = '-';
+        sec = -sec;
+    }
 
-  const h = Math.floor(sec / 60 / 60);
-  const m = zfill(Math.floor(sec / 60 % 60));
-  const s = zfill(Math.round(sec % 60));
+    const h = Math.floor(sec / 60 / 60);
+    const m = zfill(Math.floor(sec / 60 % 60));
+    const s = zfill(Math.round(sec % 60));
 
-  return `${sign}${h}:${m}:${s}`;
+    return `${sign}${h}:${m}:${s}`;
 }
-
 
 class TimeButton {
     constructor(labelSelector, radioSelector, initial) {
