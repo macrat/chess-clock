@@ -13,6 +13,16 @@
     "purpose": "maskable any",
     "type": "image/png"
   }, {
+    "src": "/icon192.png",
+    "sizes": "192x192",
+    "purpose": "maskable any",
+    "type": "image/png"
+  }, {
+    "src": "/icon512.png",
+    "sizes": "512x512",
+    "purpose": "maskable any",
+    "type": "image/png"
+  }, {
     "src": "/icon.svg",
     "sizes": "48x48 72x72 96x96 128x128 144x144 256x256",
     "purpose": "maskable any",
