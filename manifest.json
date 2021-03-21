@@ -3,8 +3,18 @@
   "short_name": "ChessClock",
   "description": "simple chess clock",
   "icons": [{
+    "src": "/icon48.png",
+    "sizes": "48x48",
+    "purpose": "maskable any",
+    "type": "image/png"
+  }, {
+    "src": "/icon96.png",
+    "sizes": "96x96",
+    "purpose": "maskable any",
+    "type": "image/png"
+  }, {
     "src": "/icon.svg",
-    "sizes": "any",
+    "sizes": "48x48 72x72 96x96 128x128 144x144 256x256",
     "purpose": "maskable any",
     "type": "image/svg+xml"
   }],
