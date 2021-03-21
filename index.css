@@ -1,0 +1,110 @@
+main {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    user-select: none;
+}
+
+.white {
+    background-color: white;
+    color: black;
+}
+.black {
+    background-color: black;
+    color: white;
+}
+
+input[type="radio"] {
+    display: none;
+}
+input[type="radio"]:checked + label {
+    flex: 0;
+}
+
+.pause {
+    background-color: #aaa;
+    color: #555;
+    overflow: hidden;
+    flex: 0;
+    min-height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.pause-label {
+    position: absolute;
+    opacity: 1;
+    transition: opacity .2s;
+}
+.pause-label:first-of-type {
+    left: 12px;
+}
+.pause-label:last-of-type {
+    right: 12px;
+    transform: rotate(180deg);
+}
+input[type="radio"]:checked + .pause .pause-label {
+    opacity: 0;
+}
+
+.time {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    font-size: 300%;
+    padding: 32px 12px;
+    transition: flex .2s;
+    border: 6px solid transparent
+}
+.time.white {
+    transform: rotate(180deg);
+}
+.time.negative {
+    animation: 1s linear infinite alternate blink;
+    border-color: red;
+}
+
+@keyframes blink {
+      0% { border-color: transparent }
+     45% { border-color: transparent }
+     55% { border-color: red }
+    100% { border-color: red }
+}
+
+.settings {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    display: none;
+    opacity: 0;
+    transition: opacity .2s;
+}
+input[type="radio"]:checked + .pause {
+    flex: 1;
+}
+input[type="radio"]:checked + .pause .settings {
+    display: flex;
+    opacity: 1;
+}
+.settings div {
+    display: flex;
+}
+.settings input {
+    border: none;
+    font-size: 110%;
+    width: 8em;
+    max-width: 100%;
+    padding: .2em .5em;
+}
+.settings button {
+    background-color: #555;
+    color: white;
+    border: none;
+    padding: .3em;
+    width: 100%;
+}

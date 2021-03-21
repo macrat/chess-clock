@@ -1,0 +1,15 @@
+{
+  "name": "ChessClock",
+  "short_name": "ChessClock",
+  "description": "simple chess clock",
+  "icons": [{
+    "src": "/icon.svg",
+    "sizes": "any",
+    "purpose": "maskable any",
+    "type": "image/svg+xml"
+  }],
+  "start_url": "/",
+  "display": "fullscreen",
+  "background_color": "#aaaaaa",
+  "theme_color": "#555"
+}

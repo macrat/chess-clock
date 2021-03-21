@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>ChessClock</title>
+        <meta name="description" content="simple chess clock" />
+        <meta name="theme-color" content="#aaa" />
+        <meta property="og:title" content="ChessClock" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://chess-clock.macr.app" />
+        <meta property="og:image" content="https://chess-clock.macr.app/screenshot.png" />
+        <link rel="manifest" href="/manifest.json" />
+        <link rel="shortcut icon" href="/icon.svg" id="favicon" />
+        <link rel="stylesheet" href="/index.css" />
+        <script src="index.js" defer></script>
+    </head>
+    <body>
+        <main>
+            <input type="radio" id="white-time" class="white radio" name="button" />
+            <label for="white-time" class="white time"></label>
+
+            <input type="radio" id="pause-button" name="button" checked />
+            <label for="pause-button" class="pause">
+                <div class="pause-label">pause</div>
+                <div class="settings">
+                    <div>
+                        <input class="white initial-time" type="number" value="60" />
+                        <input class="black initial-time" type="number" value="60" />
+                    </div>
+
+                    <button>SET</button>
+                </div>
+                <div class="pause-label">pause</div>
+            </label>
+
+            <input type="radio" id="black-time" class="black radio" name="button" />
+            <label for="black-time" class="black time"></label>
+        </main>
+
+        <script>
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('sw.js').then(reg => {
+        console.log('sw.js registered');
+    }).catch(err => {
+        console.error('sw.jw register failed');
+    });
+}
+        </script>
+    </body>
+</html>
