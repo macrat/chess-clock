@@ -56,11 +56,14 @@ input[type="radio"]:checked + .pause .pause-label {
     display: flex;
     justify-content: center;
     align-content: center;
-    font-size: 400%;
     padding: 32px 12px;
     transition: flex .2s;
     border-bottom: 16px solid;
     animation: 1s linear infinite alternate blink;
+    position: relative;
+}
+.time .clock {
+    font-size: 400%;
 }
 .time.white {
     transform: rotate(180deg);
@@ -71,6 +74,18 @@ input[type="radio"]:checked + .pause .pause-label {
 }
 .time:not(.timeup) {
     border-color: transparent;
+}
+.total.clock, .count {
+    position: absolute;
+    bottom: 4px;
+    font-size: 150%;
+    opacity: 50%;
+}
+.total.clock {
+    right: 24px;
+}
+.count {
+    left: 24px;
 }
 
 @keyframes blink {

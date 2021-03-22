@@ -19,7 +19,11 @@
     <body>
         <main>
             <input type="radio" id="white-time" class="white radio" name="button" />
-            <label for="white-time" class="white time">1:00:00</label>
+            <label for="white-time" class="white time">
+                <span class="white clock">1:00:00</span>
+                <span class="white count">0</span>
+                <span class="total clock">0:00:00</span>
+            </label>
 
             <input type="radio" id="pause-button" name="button" checked />
             <label for="pause-button" class="pause">
@@ -36,10 +40,15 @@
             </label>
 
             <input type="radio" id="black-time" class="black radio" name="button" />
-            <label for="black-time" class="black time">1:00:00</label>
+            <label for="black-time" class="black time">
+                <span class="black clock">1:00:00</span>
+                <span class="black count">0</span>
+                <span class="total clock">0:00:00</span>
+            </label>
         </main>
 
         <script>
+            /*
 if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('sw.js').then(reg => {
         console.log('sw.js registered');
@@ -47,6 +56,7 @@ if ('serviceWorker' in navigator) {
         console.error('sw.js register failed');
     });
 }
+            */
         </script>
     </body>
 </html>
