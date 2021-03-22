@@ -15,13 +15,13 @@ const second2str = (sec) => {
 }
 
 class TimeButton {
-    constructor(labelSelector, radioSelector, initial) {
+    constructor(labelSelector, radioSelector) {
         this.label = document.querySelector(labelSelector);
         this.radio = document.querySelector(radioSelector);
         this.clock = this.label.querySelector('.clock');
         this.count = this.label.querySelector('.count');
 
-        this.remain = this.initial = Number(initial);
+        this.remain = this.initial = 0;
 
         this.radio.addEventListener('change', () => this.onChange());
     }
@@ -46,20 +46,24 @@ class TimeButton {
 }
 
 
-const whiteInitial = localStorage.getItem('white-initial') ? Number(localStorage.getItem('white-initial')) : (60 * 60 * 1000);
-const blackInitial = localStorage.getItem('black-initial') ? Number(localStorage.getItem('black-initial')) : (60 * 60 * 1000);
-
 const white = new TimeButton('label.white', '.black.radio', localStorage.getItem('white-remain') || whiteInitial);
 const black = new TimeButton('label.black', '.white.radio', localStorage.getItem('black-remain') || blackInitial);
 const totalClocks = document.querySelectorAll('.total.clock');
 const favicon = document.querySelector('#favicon');
 
-document.querySelector('.white.initial-time').value = whiteInitial / 60 / 1000;
-document.querySelector('.black.initial-time').value = blackInitial / 60 / 1000;
+white.initial = localStorage.getItem('white-initial') ? Number(localStorage.getItem('white-initial')) : (60 * 60 * 1000);
+black.initial = localStorage.getItem('black-initial') ? Number(localStorage.getItem('black-initial')) : (60 * 60 * 1000);
+document.querySelector('.white.initial-time').value = white.initial / 60 / 1000;
+document.querySelector('.black.initial-time').value = black.initial / 60 / 1000;
+white.remain = localStorage.getItem('white-remain') ? Number(localStorage.getItem('white-remain')) : white.initial;
+black.remain = localStorage.getItem('black-remain') ? Number(localStorage.getItem('black-remain')) : black.initial;
+
+white.count.innerText = Number(localStorage.getItem('white-count')) || 0;
+black.count.innerText = Number(localStorage.getItem('black-count')) || 0;
 
 
 let beforeTime = new Date().getTime();
-let totalTime = 0;
+let totalTime = Number(localStorage.getItem('total-time')) || 0;
 setInterval(() => {
     const now = new Date().getTime();
     const delta = now - beforeTime;
@@ -101,4 +105,7 @@ document.querySelector('button').addEventListener('click', () => {
 window.addEventListener('beforeunload', () => {
     localStorage.setItem('white-remain', white.remain);
     localStorage.setItem('black-remain', black.remain);
+    localStorage.setItem('white-count', white.count.innerText);
+    localStorage.setItem('black-count', black.count.innerText);
+    localStorage.setItem('total-time', totalTime);
 });
