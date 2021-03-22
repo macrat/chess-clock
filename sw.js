@@ -1,20 +1,15 @@
 const CACHE_VERSION = 'v4';
 const CACHE_NAME = `ChessClock#${CACHE_VERSION}`;
 
-
 const urlsToCache = [
     '.',
     'index.js',
     'index.css',
 ];
 
-
 self.addEventListener('install', ev => {
-    ev.waitUntil(
-        caches.open(CACHE_NAME).then(cache => cache.addAll(urlsToCache))
-    );
+    ev.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(urlsToCache)));
 });
-
 
 self.addEventListener('activate', ev => {
     ev.waitUntil(
@@ -25,7 +20,6 @@ self.addEventListener('activate', ev => {
         ))
     );
 });
-
 
 self.addEventListener('fetch', ev => {
     ev.respondWith(

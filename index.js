@@ -1,11 +1,8 @@
 const zfill = (val) => `00${val}`.slice(-2);
 
 const second2str = (sec) => {
-    let sign = '';
-    if (sec < 0) {
-        sign = '-';
-        sec = -sec;
-    }
+    const sign = sec < 0 ? '-' : '';
+    sec = Math.abs(sec);
 
     const h = Math.floor(sec / 60 / 60);
     const m = zfill(Math.floor(sec / 60 % 60));
@@ -61,9 +58,9 @@ black.remain = localStorage.getItem('black-remain') ? Number(localStorage.getIte
 white.count.innerText = Number(localStorage.getItem('white-count')) || 0;
 black.count.innerText = Number(localStorage.getItem('black-count')) || 0;
 
+let totalTime = Number(localStorage.getItem('total-time')) || 0;
 
 let beforeTime = new Date().getTime();
-let totalTime = Number(localStorage.getItem('total-time')) || 0;
 setInterval(() => {
     const now = new Date().getTime();
     const delta = now - beforeTime;
@@ -89,7 +86,6 @@ setInterval(() => {
     beforeTime = now;
 }, 100);
 
-
 document.querySelector('button').addEventListener('click', () => {
     white.remain = white.initial = Number(document.querySelector('.white.initial-time').value) * 60 * 1000;
     black.remain = black.initial = Number(document.querySelector('.black.initial-time').value) * 60 * 1000;
@@ -100,7 +96,6 @@ document.querySelector('button').addEventListener('click', () => {
     localStorage.setItem('white-initial', white.initial);
     localStorage.setItem('black-initial', black.initial);
 });
-
 
 window.addEventListener('beforeunload', () => {
     localStorage.setItem('white-remain', white.remain);
