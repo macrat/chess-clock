@@ -43,8 +43,8 @@ class TimeButton {
 }
 
 
-const white = new TimeButton('label.white', '.black.radio', localStorage.getItem('white-remain') || whiteInitial);
-const black = new TimeButton('label.black', '.white.radio', localStorage.getItem('black-remain') || blackInitial);
+const white = new TimeButton('label.white', '.black.radio', localStorage.getItem('white-remain') || (60 * 60 * 1000));
+const black = new TimeButton('label.black', '.white.radio', localStorage.getItem('black-remain') || (60 * 60 * 1000));
 const totalClocks = document.querySelectorAll('.total.clock');
 const favicon = document.querySelector('#favicon');
 
